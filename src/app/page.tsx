@@ -278,7 +278,7 @@ export default function Home() {
               />
               <div className="relative z-10 grid gap-3 pt-4 sm:grid-cols-3">
                 {[
-                  ["2 horas", "Experiência completa"],
+                  ["6 horas", "Experiência completa"],
                   ["Privativo", "Para o seu grupo"],
                   ["Até 14", "passageiros + marinheiro"]
                 ].map(([title, subtitle]) => (
