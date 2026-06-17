@@ -15,7 +15,8 @@ const config: Config = {
         sun: "#FFC857"
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "Arial", "sans-serif"]
+        sans: ["var(--font-sans)", "Arial", "sans-serif"],
+        display: ["var(--font-display)", "Georgia", "serif"]
       },
       boxShadow: {
         soft: "0 18px 60px rgba(11, 60, 93, 0.14)"

@@ -134,6 +134,30 @@ const contactItems: Array<{ icon: LucideIcon; text: string }> = [
   { icon: Sailboat, text: "Passeio privativo com valores sob consulta" }
 ];
 
+const trustItems = [
+  "Atendimento direto pelo WhatsApp",
+  "Reserva confirmada com sinal",
+  "Passeio privativo para o seu grupo"
+];
+
+const experiencePoints = [
+  {
+    title: "Planejado para grupos reais",
+    description: "Escolha a lancha conforme o tamanho da turma e receba a indicação ideal para sua data.",
+    icon: Users
+  },
+  {
+    title: "Roteiro fotogênico",
+    description: "Bancos de areia, piscinas naturais, capela, manguezais e paradas perfeitas para fotos.",
+    icon: Camera
+  },
+  {
+    title: "Operação clara e simples",
+    description: "Valores sob consulta, confirmação rápida e embarque alinhado no Píer de Guadalupe.",
+    icon: ShieldCheck
+  }
+];
+
 function SectionTitle({
   eyebrow,
   title,
@@ -146,16 +170,15 @@ function SectionTitle({
   return (
     <div className="mx-auto max-w-3xl text-center">
       <p className="eyebrow">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-black text-navy sm:text-4xl">{title}</h2>
+      <h2 className="font-display mt-3 text-3xl font-bold text-navy sm:text-4xl">{title}</h2>
       <p className="mt-4 text-base leading-8 text-navy/70">{description}</p>
     </div>
   );
 }
 
-// Esta página concentra a landing page inteira; os arrays acima alimentam seções repetidas sem espalhar conteúdo pelo JSX.
 export default function Home() {
   return (
-    <main className="overflow-hidden bg-white">
+    <main className="overflow-hidden text-navy">
       <a
         href={whatsappUrl}
         target="_blank"
@@ -166,40 +189,53 @@ export default function Home() {
         <MessageCircle size={28} />
       </a>
 
-      <section className="relative min-h-[92vh] bg-navy text-white">
+      <section className="relative isolate min-h-screen overflow-hidden bg-navy text-white">
         <div
-          className="absolute inset-0 bg-cover bg-center opacity-45"
+          className="absolute inset-0 bg-cover bg-center opacity-25"
           style={{
             backgroundImage:
               "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85')"
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-navy/80 to-turquoise/50" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,200,87,0.35),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(0,180,216,0.25),_transparent_30%),linear-gradient(135deg,rgba(11,60,93,0.98)_0%,rgba(11,60,93,0.86)_55%,rgba(0,180,216,0.35)_100%)]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-white/20" />
+
         <nav className="section-shell relative z-10 flex items-center justify-between py-5">
-          <a href="#inicio" className="flex items-center gap-3 font-black">
-            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-sun text-navy">
+          <a href="#inicio" className="flex items-center gap-3 font-black tracking-wide">
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-sun text-navy shadow-soft">
               <Anchor size={22} />
             </span>
             <span>Paraíso Náutico PE</span>
           </a>
+          <div className="hidden items-center gap-6 text-sm font-bold text-white/75 md:flex">
+            <a href="#frota" className="transition hover:text-white">
+              Frota
+            </a>
+            <a href="#roteiro" className="transition hover:text-white">
+              Roteiro
+            </a>
+            <a href="#contato" className="transition hover:text-white">
+              Contato
+            </a>
+          </div>
           <a
             href="#contato"
-            className="focus-ring hidden rounded-[8px] bg-white px-4 py-3 text-sm font-black text-navy transition hover:bg-sun sm:inline-flex"
+            className="focus-ring hidden rounded-full bg-white px-4 py-3 text-sm font-black text-navy transition hover:bg-sun sm:inline-flex"
           >
             Reservar agora
           </a>
         </nav>
 
-        <div id="inicio" className="section-shell relative z-10 grid min-h-[calc(92vh-84px)] items-center gap-10 pb-14 lg:grid-cols-[1.08fr_.92fr]">
+        <div id="inicio" className="section-shell relative z-10 grid min-h-[calc(100vh-84px)] items-center gap-10 pb-14 pt-4 lg:grid-cols-[1.04fr_.96fr]">
           <div className="max-w-3xl animate-reveal">
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur-xl">
               <Sparkles size={16} className="text-sun" />
               Passeio privativo na Praia dos Carneiros
             </p>
-            <h1 className="mt-6 text-4xl font-black leading-tight sm:text-6xl lg:text-7xl">
-              Sua lancha exclusiva para viver Carneiros pelo mar.
+            <h1 className="font-display mt-6 text-5xl font-bold leading-[0.95] sm:text-7xl lg:text-[5.25rem]">
+              Seu dia no mar, com a estética de uma experiência premium.
             </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80">
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl">
               Roteiro de 2 horas com embarque no Píer de Guadalupe, passando por piscinas naturais,
               bancos de areia, manguezais e pontos clássicos da região.
             </p>
@@ -208,56 +244,120 @@ export default function Home() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="focus-ring inline-flex items-center justify-center gap-2 rounded-[8px] bg-sun px-6 py-4 font-black text-navy transition hover:bg-white"
+                className="focus-ring inline-flex items-center justify-center gap-2 rounded-full bg-sun px-6 py-4 font-black text-navy transition hover:-translate-y-0.5 hover:bg-white"
               >
                 Consultar disponibilidade <ArrowRight size={18} />
               </a>
               <a
                 href="#roteiro"
-                className="focus-ring inline-flex items-center justify-center gap-2 rounded-[8px] border border-white/30 px-6 py-4 font-black text-white transition hover:bg-white hover:text-navy"
+                className="focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-4 font-black text-white transition hover:bg-white hover:text-navy"
               >
                 Ver roteiro <Compass size={18} />
               </a>
             </div>
-          </div>
 
-          <div className="animate-float rounded-[8px] border border-white/20 bg-white/10 p-4 backdrop-blur">
-            <img
-              src="/images/boat-line.svg"
-              alt="Ilustração temporária de lancha"
-              className="h-auto w-full rounded-[8px]"
-            />
-            <div className="grid gap-3 pt-4 sm:grid-cols-3">
-              {["2 horas", "Privativo", "Até 14 pessoas"].map((item) => (
-                <div key={item} className="rounded-[8px] bg-white/10 p-3 text-center text-sm font-bold">
+            <div className="mt-8 grid gap-3 sm:grid-cols-3">
+              {trustItems.map((item) => (
+                <div key={item} className="glass-panel rounded-2xl px-4 py-3 text-sm font-bold text-white shadow-soft">
                   {item}
                 </div>
               ))}
             </div>
           </div>
+
+          <div className="animate-float lg:justify-self-end">
+            <div className="relative overflow-hidden rounded-[32px] border border-white/15 bg-white/10 p-4 shadow-soft backdrop-blur-xl">
+              <div className="absolute -left-10 top-8 h-40 w-40 rounded-full bg-sun/20 blur-3xl" />
+              <div className="absolute bottom-8 right-4 h-48 w-48 rounded-full bg-turquoise/20 blur-3xl" />
+              <Image
+                src="/images/boat-line.svg"
+                alt="Ilustração de lancha em estilo minimalista"
+                width={960}
+                height={560}
+                className="relative z-10 h-auto w-full rounded-[24px]"
+              />
+              <div className="relative z-10 grid gap-3 pt-4 sm:grid-cols-3">
+                {[
+                  ["2 horas", "Experiência completa"],
+                  ["Privativo", "Para o seu grupo"],
+                  ["Até 14", "passageiros + marinheiro"]
+                ].map(([title, subtitle]) => (
+                  <div key={title} className="rounded-2xl border border-white/10 bg-navy/40 p-3 text-center backdrop-blur">
+                    <div className="text-base font-black text-white">{title}</div>
+                    <div className="mt-1 text-xs uppercase tracking-[0.22em] text-white/65">{subtitle}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <div className="glass-panel rounded-[28px] p-5 text-navy shadow-soft">
+                <p className="text-sm font-bold uppercase tracking-[0.22em] text-turquoise">Atendimento</p>
+                <p className="mt-3 text-2xl font-black">Resposta rápida pelo WhatsApp</p>
+                <p className="mt-2 text-sm leading-6 text-navy/70">
+                  Envie data, quantidade de pessoas e receba a melhor opção de lancha.
+                </p>
+              </div>
+              <div className="glass-panel rounded-[28px] p-5 text-navy shadow-soft">
+                <p className="text-sm font-bold uppercase tracking-[0.22em] text-turquoise">Formato</p>
+                <p className="mt-3 text-2xl font-black">Passeio exclusivo e sem complicação</p>
+                <p className="mt-2 text-sm leading-6 text-navy/70">
+                  Concentra o essencial em uma jornada curta, visual e prática.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="bg-sand py-16 sm:py-24">
-        <div className="section-shell grid gap-10 lg:grid-cols-[.95fr_1.05fr] lg:items-center">
+      <section className="bg-sand/80 py-16 sm:py-24">
+        <div className="section-shell grid gap-10 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
           <div>
             <p className="eyebrow">Sobre a experiência</p>
-            <h2 className="mt-3 text-3xl font-black text-navy sm:text-4xl">
+            <h2 className="font-display mt-3 text-4xl font-bold text-navy sm:text-5xl">
               Um passeio privativo, leve e sob medida para o seu grupo.
             </h2>
-            <p className="mt-5 text-lg leading-8 text-navy/75">
+            <p className="mt-5 max-w-xl text-lg leading-8 text-navy/75">
               A Paraíso Náutico PE conecta você aos cenários mais desejados de Carneiros com conforto,
               praticidade e atendimento direto pelo WhatsApp.
             </p>
+            <div className="mt-8 grid gap-4 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              {highlights.map(({ icon: Icon, title, text }) => (
+                <div key={title} className="card-hover rounded-[28px] bg-white p-5 shadow-sm">
+                  <Icon className="text-turquoise" size={30} />
+                  <h3 className="mt-4 text-xl font-black text-navy">{title}</h3>
+                  <p className="mt-2 text-sm leading-6 text-navy/70">{text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid gap-4 sm:grid-cols-3">
-            {highlights.map(({ icon: Icon, title, text }) => (
-              <div key={title} className="card-hover rounded-[8px] bg-white p-5">
-                <Icon className="text-turquoise" size={30} />
-                <h3 className="mt-4 font-black text-navy">{title}</h3>
-                <p className="mt-2 text-sm leading-6 text-navy/70">{text}</p>
+          <div className="glass-panel rounded-[36px] p-5 shadow-soft">
+            <div className="grid gap-4 md:grid-cols-3">
+              {experiencePoints.map(({ title, description, icon: Icon }) => (
+                <div key={title} className="rounded-[28px] bg-white p-5 shadow-sm">
+                  <Icon className="text-turquoise" size={26} />
+                  <h3 className="mt-4 text-xl font-black text-navy">{title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-navy/70">{description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4 rounded-[28px] bg-[linear-gradient(135deg,rgba(11,60,93,0.96)_0%,rgba(11,60,93,0.88)_50%,rgba(0,180,216,0.92)_100%)] p-6 text-white">
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-sun">Resumo</p>
+              <p className="mt-3 max-w-2xl text-2xl font-black leading-tight sm:text-3xl">
+                Tudo foi desenhado para reduzir atrito e deixar a decisão de reserva simples.
+              </p>
+              <div className="mt-6 flex flex-wrap gap-3 text-sm font-bold">
+                {[
+                  "Atendimento por WhatsApp",
+                  "Embarque no Píer de Guadalupe",
+                  "Reserva mediante sinal"
+                ].map((item) => (
+                  <span key={item} className="rounded-full border border-white/15 bg-white/10 px-4 py-2">
+                    {item}
+                  </span>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
@@ -271,9 +371,9 @@ export default function Home() {
           />
           <div className="mt-12 grid gap-5 lg:grid-cols-3">
             {fleet.map((boat) => (
-              <article key={boat.name} className="card-hover rounded-[8px] border border-navy/10 bg-white p-6">
+              <article key={boat.name} className="card-hover rounded-[32px] border border-navy/10 bg-white p-6 shadow-sm">
                 <span className={`block h-2 w-20 rounded-full ${boat.accent}`} />
-                <h3 className="mt-6 text-2xl font-black text-navy">{boat.name}</h3>
+                <h3 className="font-display mt-6 text-3xl font-bold text-navy">{boat.name}</h3>
                 <p className="mt-3 flex items-center gap-2 font-bold text-navy/80">
                   <Users size={18} className="text-turquoise" /> {boat.capacity}
                 </p>
@@ -289,15 +389,21 @@ export default function Home() {
 
       <section id="roteiro" className="bg-navy py-16 text-white sm:py-24">
         <div className="section-shell grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-center">
-          <img src="/images/route-map.svg" alt="Mapa temporário do roteiro" className="rounded-[8px] shadow-soft" />
+          <Image
+            src="/images/route-map.svg"
+            alt="Mapa temporário do roteiro"
+            width={960}
+            height={720}
+            className="rounded-[32px] border border-white/10 shadow-soft"
+          />
           <div>
             <p className="eyebrow text-sun">Roteiro</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Os cartões-postais de Carneiros no mesmo passeio.</h2>
+            <h2 className="font-display mt-3 text-4xl font-bold sm:text-5xl">Os cartões-postais de Carneiros no mesmo passeio.</h2>
             <div className="mt-8 grid gap-4 overflow-x-auto pb-2 [scrollbar-width:none] md:grid-cols-2 md:overflow-visible xl:grid-cols-3">
               {route.map(({ name, description, image, icon: Icon }) => (
                 <article
                   key={name}
-                  className="group flex min-w-[84%] snap-start flex-col overflow-hidden rounded-[8px] border border-white/10 bg-white/8 shadow-soft backdrop-blur transition duration-300 ease-out hover:-translate-y-1 hover:shadow-soft md:min-w-0"
+                  className="group flex min-w-[84%] snap-start flex-col overflow-hidden rounded-[32px] border border-white/10 bg-white/8 shadow-soft backdrop-blur transition duration-300 ease-out hover:-translate-y-1 hover:shadow-soft md:min-w-0"
                 >
                   <div className="relative h-52 overflow-hidden">
                     <Image
@@ -337,11 +443,11 @@ export default function Home() {
           />
           <div className="mt-12 grid gap-4 lg:grid-cols-4">
             {steps.map(([title, text], index) => (
-              <div key={title} className="rounded-[8px] bg-sand p-5">
+              <div key={title} className="rounded-[28px] bg-sand p-5 shadow-sm">
                 <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-navy font-black text-white">
                   {index + 1}
                 </span>
-                <h3 className="mt-5 text-xl font-black text-navy">{title}</h3>
+                <h3 className="mt-5 text-2xl font-black text-navy">{title}</h3>
                 <p className="mt-3 leading-7 text-navy/70">{text}</p>
               </div>
             ))}
@@ -358,11 +464,13 @@ export default function Home() {
           />
           <div className="mt-12 grid auto-rows-[230px] gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {gallery.map((image, index) => (
-              <img
+              <Image
                 key={image.src}
                 src={image.src}
                 alt={image.alt}
-                className={`h-full w-full rounded-[8px] object-cover shadow-soft ${index === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
+                width={index === 0 ? 1200 : 900}
+                height={index === 0 ? 900 : 700}
+                className={`h-full w-full rounded-[28px] object-cover shadow-soft ${index === 0 ? "lg:col-span-2 lg:row-span-2" : ""}`}
               />
             ))}
           </div>
@@ -373,14 +481,14 @@ export default function Home() {
         <div className="section-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
           <div>
             <p className="eyebrow">FAQ</p>
-            <h2 className="mt-3 text-3xl font-black text-navy sm:text-4xl">Dúvidas frequentes</h2>
+            <h2 className="font-display mt-3 text-4xl font-bold text-navy sm:text-5xl">Dúvidas frequentes</h2>
             <p className="mt-4 leading-8 text-navy/70">
               As informações essenciais para consultar, reservar e aproveitar o passeio.
             </p>
           </div>
           <div className="space-y-3">
             {faq.map(([question, answer]) => (
-              <details key={question} className="group rounded-[8px] border border-navy/10 bg-white p-5 shadow-sm">
+              <details key={question} className="group rounded-[28px] border border-navy/10 bg-white p-5 shadow-sm">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-black text-navy">
                   <span className="flex items-center gap-2">
                     <HelpCircle size={18} className="text-turquoise" /> {question}
@@ -396,9 +504,9 @@ export default function Home() {
 
       <section id="contato" className="bg-[url('/images/wave-pattern.svg')] bg-cover bg-center py-16 sm:py-24">
         <div className="section-shell grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-start">
-          <div className="rounded-[8px] bg-navy p-6 text-white shadow-soft sm:p-8">
+          <div className="rounded-[32px] bg-navy p-6 text-white shadow-soft sm:p-8">
             <p className="eyebrow text-sun">Contato</p>
-            <h2 className="mt-3 text-3xl font-black sm:text-4xl">Reserve seu passeio privativo em Carneiros.</h2>
+            <h2 className="font-display mt-3 text-4xl font-bold sm:text-5xl">Reserve seu passeio privativo em Carneiros.</h2>
             <div className="mt-8 space-y-4">
               {contactItems.map(({ icon: Icon, text }) => (
                 <p key={text} className="flex items-start gap-3 leading-7">

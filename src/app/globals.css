@@ -7,14 +7,30 @@
   scroll-behavior: smooth;
 }
 
+html {
+  background:
+    radial-gradient(circle at top left, rgba(0, 180, 216, 0.18), transparent 32%),
+    radial-gradient(circle at top right, rgba(255, 200, 87, 0.18), transparent 26%),
+    linear-gradient(180deg, #fdfaf3 0%, #f7f1e1 100%);
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  background: #ffffff;
+  min-height: 100vh;
+  background: transparent;
   color: #0b3c5d;
+  font-family: var(--font-sans), Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), Georgia, serif;
 }
 
 ::selection {
@@ -36,4 +52,8 @@ body {
 
 .card-hover {
   @apply transition duration-300 ease-out hover:-translate-y-1 hover:shadow-soft;
+}
+
+.glass-panel {
+  @apply border border-white/20 bg-white/80 backdrop-blur-xl;
 }

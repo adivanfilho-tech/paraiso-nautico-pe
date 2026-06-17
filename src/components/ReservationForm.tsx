@@ -50,11 +50,11 @@ export function ReservationForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-[8px] border border-navy/10 bg-white p-5 shadow-soft sm:p-6"
+      className="glass-panel rounded-[28px] p-5 shadow-soft sm:p-6 lg:p-7"
     >
       <div className="mb-6">
         <p className="eyebrow">Reserva rápida</p>
-        <h3 className="mt-2 text-2xl font-black text-navy">Consultar disponibilidade</h3>
+        <h3 className="mt-2 text-3xl font-black text-navy">Consultar disponibilidade</h3>
         <p className="mt-2 text-sm leading-6 text-navy/70">
           Envie os dados e continue a conversa direto no WhatsApp da equipe.
         </p>
@@ -64,7 +64,7 @@ export function ReservationForm() {
         <label className="sm:col-span-2">
           <span className="text-sm font-bold text-navy">Nome</span>
           <input
-            className="focus-ring mt-2 w-full rounded-[8px] border border-navy/20 px-4 py-3 text-navy placeholder:text-navy/40"
+            className="focus-ring mt-2 w-full rounded-2xl border border-navy/15 bg-white px-4 py-3 text-navy placeholder:text-navy/40"
             placeholder="Seu nome"
             {...register("name", { required: "Informe seu nome" })}
           />
@@ -76,7 +76,7 @@ export function ReservationForm() {
             <MessageCircle size={16} /> WhatsApp
           </span>
           <input
-            className="focus-ring mt-2 w-full rounded-[8px] border border-navy/20 px-4 py-3 text-navy placeholder:text-navy/40"
+            className="focus-ring mt-2 w-full rounded-2xl border border-navy/15 bg-white px-4 py-3 text-navy placeholder:text-navy/40"
             placeholder="(81) 99999-9999"
             {...register("whatsapp", { required: "Informe seu WhatsApp" })}
           />
@@ -90,7 +90,7 @@ export function ReservationForm() {
           <input
             type="date"
             min={today}
-            className="focus-ring mt-2 w-full rounded-[8px] border border-navy/20 px-4 py-3 text-navy"
+            className="focus-ring mt-2 w-full rounded-2xl border border-navy/15 bg-white px-4 py-3 text-navy"
             {...register("date", { required: "Escolha uma data" })}
           />
           {errors.date && <span className="mt-1 block text-sm text-red-600">{errors.date.message}</span>}
@@ -104,7 +104,7 @@ export function ReservationForm() {
             type="number"
             min={1}
             max={14}
-            className="focus-ring mt-2 w-full rounded-[8px] border border-navy/20 px-4 py-3 text-navy"
+            className="focus-ring mt-2 w-full rounded-2xl border border-navy/15 bg-white px-4 py-3 text-navy"
             {...register("people", {
               required: "Informe a quantidade",
               valueAsNumber: true,
@@ -120,7 +120,7 @@ export function ReservationForm() {
             <Sailboat size={16} /> Lancha
           </span>
           <select
-            className="focus-ring mt-2 w-full rounded-[8px] border border-navy/20 bg-white px-4 py-3 text-navy"
+            className="focus-ring mt-2 w-full rounded-2xl border border-navy/15 bg-white px-4 py-3 text-navy"
             {...register("boat", { required: true })}
           >
             {boats.map((boat) => (
@@ -133,7 +133,7 @@ export function ReservationForm() {
           <span className="text-sm font-bold text-navy">Observações</span>
           <textarea
             rows={4}
-            className="focus-ring mt-2 w-full resize-none rounded-[8px] border border-navy/20 px-4 py-3 text-navy placeholder:text-navy/40"
+            className="focus-ring mt-2 w-full resize-none rounded-2xl border border-navy/15 bg-white px-4 py-3 text-navy placeholder:text-navy/40"
             placeholder="Horário preferido, ocasião especial ou dúvidas"
             {...register("notes")}
           />
@@ -143,7 +143,7 @@ export function ReservationForm() {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="focus-ring mt-6 inline-flex w-full items-center justify-center gap-2 rounded-[8px] bg-sun px-5 py-4 text-sm font-black uppercase tracking-wide text-navy transition hover:bg-turquoise hover:text-white disabled:opacity-70"
+        className="focus-ring mt-6 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-navy px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:bg-turquoise disabled:opacity-70"
       >
         <Send size={18} />
         Enviar pelo WhatsApp
