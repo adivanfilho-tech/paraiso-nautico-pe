@@ -21,6 +21,46 @@ import { ReservationForm } from "@/components/ReservationForm";
 const whatsappUrl =
   "https://wa.me/5581997762188?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20um%20passeio%20de%20lancha%20na%20Praia%20dos%20Carneiros.";
 
+const passeioMensagem = encodeURIComponent("Olá! Gostaria de informações sobre o passeio de lancha.");
+const hospedagemMensagem = encodeURIComponent("Olá! Gostaria de informações sobre a hospedagem.");
+const pacoteCompletoMensagem = encodeURIComponent("Olá! Gostaria de informações sobre o pacote completo.");
+
+const experienceCards = [
+  {
+    title: "Passeio de Lancha",
+    highlights: [
+      "Embarque no Píer de Guadalupe",
+      "Roteiro personalizado",
+      "Grupos de até 14 pessoas + marinheiro",
+      "Horários sob consulta"
+    ],
+    buttonLabel: "Reservar passeio",
+    href: `https://wa.me/5581997762188?text=${passeioMensagem}`
+  },
+  {
+    title: "Hospedagem",
+    highlights: [
+      "Casa com piscina",
+      "Localizada no Trevo da Barra",
+      "Aproximadamente 9 minutos do Píer de Guadalupe",
+      "Disponível para diárias, finais de semana e feriados"
+    ],
+    buttonLabel: "Consultar hospedagem",
+    href: `https://wa.me/5581997762188?text=${hospedagemMensagem}`
+  },
+  {
+    title: "Pacote Completo",
+    highlights: [
+      "Hospedagem + passeio privativo",
+      "Ideal para famílias e grupos",
+      "Atendimento personalizado",
+      "Valores sob consulta"
+    ],
+    buttonLabel: "Montar meu pacote",
+    href: `https://wa.me/5581997762188?text=${pacoteCompletoMensagem}`
+  }
+];
+
 const gallery = [
   {
     src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
@@ -65,43 +105,43 @@ const route = [
   {
     name: "Capela de São Benedito",
     description: "Um dos cartões-postais mais tradicionais de Carneiros, cercado por mar calmo.",
-    image: "/images/roteiro/capela-sao-benedito.jpg",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
     icon: Anchor
   },
   {
     name: "Bancos de areia",
     description: "Parada para caminhar na maré baixa e observar a cor da água mudar ao redor.",
-    image: "/images/roteiro/bancos-areia.jpg",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
     icon: Compass
   },
   {
     name: "Praia da Argila",
     description: "Trecho famoso pelas formações naturais e pela paisagem diferente da rota.",
-    image: "/images/roteiro/praia-argila.jpg",
+    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=900&q=80",
     icon: Sparkles
   },
   {
     name: "Píer de Guadalupe",
     description: "Ponto de embarque e referência da experiência, com vista privilegiada do litoral.",
-    image: "/images/roteiro/pier-guadalupe.jpg",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
     icon: MapPin
   },
   {
     name: "Batalha do Reduto",
     description: "Trecho de história e paisagem, ideal para fotos durante o trajeto.",
-    image: "/images/roteiro/batalha-reduto.jpg",
+    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=900&q=80",
     icon: Sailboat
   },
   {
     name: "Manguezais",
     description: "Passeio por áreas de natureza preservada, com cenário tranquilo e autêntico.",
-    image: "/images/roteiro/manguezais.jpg",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
     icon: CheckCircle2
   },
   {
     name: "Piscinas naturais",
     description: "Momento mais procurado do roteiro, com água cristalina e parada relaxante.",
-    image: "/images/roteiro/piscinas-naturais.jpg",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=900&q=80",
     icon: Camera
   }
 ];
@@ -189,14 +229,11 @@ export default function Home() {
         <MessageCircle size={28} />
       </a>
 
-      <section className="relative isolate min-h-screen overflow-hidden bg-navy text-white">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=85')"
-          }}
-        />
+      <section
+        className="relative isolate min-h-screen overflow-hidden bg-cover bg-center bg-no-repeat text-white"
+        style={{ backgroundImage: "url('/images/banner-praia.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/10" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,200,87,0.35),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(0,180,216,0.25),_transparent_30%),linear-gradient(135deg,rgba(11,60,93,0.98)_0%,rgba(11,60,93,0.86)_55%,rgba(0,180,216,0.35)_100%)]" />
         <div className="absolute inset-x-0 top-0 h-px bg-white/20" />
 
@@ -226,7 +263,10 @@ export default function Home() {
           </a>
         </nav>
 
-        <div id="inicio" className="section-shell relative z-10 grid min-h-[calc(100vh-84px)] items-center gap-10 pb-14 pt-4 lg:grid-cols-[1.04fr_.96fr]">
+        <div
+          id="inicio"
+          className="section-shell relative z-10 grid min-h-[calc(100vh-84px)] items-center gap-10 pb-14 pt-4 lg:grid-cols-[1.04fr_.96fr]"
+        >
           <div className="max-w-3xl animate-reveal">
             <p className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-bold backdrop-blur-xl">
               <Sparkles size={16} className="text-sun" />
@@ -237,7 +277,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/82 sm:text-xl">
               Roteiro de 2 horas com embarque no Píer de Guadalupe, passando por piscinas naturais,
-              bancos de areia, manguezais e pontos clássicos da região.
+              bancos de areia, manguezais e pontos turísticos da região.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
@@ -270,11 +310,14 @@ export default function Home() {
               <div className="absolute -left-10 top-8 h-40 w-40 rounded-full bg-sun/20 blur-3xl" />
               <div className="absolute bottom-8 right-4 h-48 w-48 rounded-full bg-turquoise/20 blur-3xl" />
               <Image
-                src="/images/boat-line.svg"
-                alt="Ilustração de lancha em estilo minimalista"
-                width={960}
-                height={560}
-                className="relative z-10 h-auto w-full rounded-[24px]"
+                src="/images/lanchas.png"
+                alt="Lancha privativa"
+                width={600}
+                height={400}
+                priority
+                loading="eager"
+                className="w-full"
+                style={{ width: "100%", height: "auto" }}
               />
               <div className="relative z-10 grid gap-3 pt-4 sm:grid-cols-3">
                 {[
@@ -313,7 +356,7 @@ export default function Home() {
       <section className="bg-sand/80 py-16 sm:py-24">
         <div className="section-shell grid gap-10 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
           <div>
-            <p className="eyebrow">Sobre a experiência</p>
+            <p className="eyebrow">Escolha sua experiência</p>
             <h2 className="font-display mt-3 text-4xl font-bold text-navy sm:text-5xl">
               Um passeio privativo, leve e sob medida para o seu grupo.
             </h2>
@@ -342,7 +385,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-4 rounded-[28px] bg-[linear-gradient(135deg,rgba(11,60,93,0.96)_0%,rgba(11,60,93,0.88)_50%,rgba(0,180,216,0.92)_100%)] p-6 text-white">
-              <p className="text-sm font-bold uppercase tracking-[0.22em] text-sun">Resumo</p>
+              <p className="text-sm font-bold uppercase tracking-[0.22em] text-sun">Hospedagem</p>
               <p className="mt-3 max-w-2xl text-2xl font-black leading-tight sm:text-3xl">
                 Tudo foi desenhado para reduzir atrito e deixar a decisão de reserva simples.
               </p>
@@ -450,6 +493,42 @@ export default function Home() {
                 <h3 className="mt-5 text-2xl font-black text-navy">{title}</h3>
                 <p className="mt-3 leading-7 text-navy/70">{text}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-sand/80 py-16 sm:py-24">
+        <div className="section-shell">
+          <SectionTitle
+            eyebrow="Escolha sua experiência"
+            title="Passeio, hospedagem ou pacote completo"
+            description="Escolha a melhor combinação para o seu grupo e fale direto com a equipe pelo WhatsApp."
+          />
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            {experienceCards.map((card) => (
+              <article key={card.title} className="card-hover rounded-[32px] border border-navy/10 bg-white p-6 shadow-sm">
+                <span className="inline-flex rounded-full bg-sun/15 px-4 py-2 text-sm font-black uppercase tracking-[0.18em] text-navy">
+                  {card.title}
+                </span>
+                <ul className="mt-6 space-y-3 text-base leading-7 text-navy/75">
+                  {card.highlights.map((item) => (
+                    <li key={item} className="flex gap-3">
+                      <span className="mt-2 inline-flex h-2.5 w-2.5 shrink-0 rounded-full bg-turquoise" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={card.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="focus-ring mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full bg-navy px-5 py-4 text-sm font-black text-white transition hover:bg-turquoise"
+                >
+                  {card.buttonLabel}
+                  <ArrowRight size={18} />
+                </a>
+              </article>
             ))}
           </div>
         </div>
