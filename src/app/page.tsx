@@ -17,6 +17,10 @@ import {
 import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 import { ReservationForm } from "@/components/ReservationForm";
+import ChooseReasons from "@/components/ChooseReasons";
+import FAQAccordion from "@/components/FAQAccordion";
+import GoogleProfileCard from "@/components/GoogleProfileCard";
+import SectionTitle from "@/components/SectionTitle";
 
 const whatsappUrl =
   "https://wa.me/5581997762188?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20para%20um%20passeio%20de%20lancha%20na%20Praia%20dos%20Carneiros.";
@@ -154,11 +158,35 @@ const steps = [
 ];
 
 const faq = [
-  ["O passeio é privativo?", "Sim. A lancha é reservada para o seu grupo, com marinheiro incluso."],
-  ["Qual é a duração?", "O passeio tem duração média de 2 horas."],
-  ["Onde acontece o embarque?", "No Píer de Guadalupe, na Praia dos Carneiros, Pernambuco."],
-  ["Como funcionam os valores?", "Os valores são sob consulta e variam conforme a quantidade de pessoas e a lancha escolhida."],
-  ["Como confirmo minha reserva?", "Após consultar disponibilidade, a reserva é confirmada mediante pagamento de sinal."]
+  { question: "Quantas pessoas cabem na lancha?", answer: "Até 14 passageiros, além do marinheiro." },
+  { question: "O passeio é privativo?", answer: "Sim. O roteiro é exclusivo para o seu grupo." },
+  { question: "Onde acontece o embarque?", answer: "No Píer de Guadalupe, em Pernambuco." },
+  { question: "Crianças podem participar?", answer: "Sim. O passeio é indicado para famílias e todas as idades." },
+  { question: "Como funciona a hospedagem?", answer: "Disponibilizamos uma casa com piscina para diárias, finais de semana e feriados, próxima ao local de embarque." },
+  { question: "Como faço minha reserva?", answer: "Basta clicar em qualquer botão de WhatsApp disponível no site para falar diretamente conosco." }
+];
+
+const chooseReasons = [
+  {
+    icon: Sailboat,
+    title: "Passeios privativos",
+    text: "Roteiros personalizados para você aproveitar o litoral com tranquilidade."
+  },
+  {
+    icon: MapPin,
+    title: "Embarque no Píer de Guadalupe",
+    text: "Localização privilegiada com acesso rápido às principais atrações da região."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Segurança e conforto",
+    text: "Lancha confortável, marinheiro experiente e atendimento personalizado."
+  },
+  {
+    icon: Star,
+    title: "Atendimento diferenciado",
+    text: "Suporte antes, durante e depois do passeio pelo WhatsApp."
+  }
 ];
 
 const highlights: Array<{ icon: LucideIcon; title: string; text: string }> = [
@@ -197,24 +225,6 @@ const experiencePoints = [
     icon: ShieldCheck
   }
 ];
-
-function SectionTitle({
-  eyebrow,
-  title,
-  description
-}: {
-  eyebrow: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="mx-auto max-w-3xl text-center">
-      <p className="eyebrow">{eyebrow}</p>
-      <h2 className="font-display mt-3 text-3xl font-bold text-navy sm:text-4xl">{title}</h2>
-      <p className="mt-4 text-base leading-8 text-navy/70">{description}</p>
-    </div>
-  );
-}
 
 export default function Home() {
   return (
@@ -352,6 +362,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ChooseReasons items={chooseReasons} />
 
       <section className="bg-sand/80 py-16 sm:py-24">
         <div className="section-shell grid gap-10 lg:grid-cols-[.92fr_1.08fr] lg:items-center">
@@ -556,30 +568,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="faq" className="py-16 sm:py-24">
-        <div className="section-shell grid gap-10 lg:grid-cols-[.8fr_1.2fr]">
-          <div>
-            <p className="eyebrow">FAQ</p>
-            <h2 className="font-display mt-3 text-4xl font-bold text-navy sm:text-5xl">Dúvidas frequentes</h2>
-            <p className="mt-4 leading-8 text-navy/70">
-              As informações essenciais para consultar, reservar e aproveitar o passeio.
-            </p>
-          </div>
-          <div className="space-y-3">
-            {faq.map(([question, answer]) => (
-              <details key={question} className="group rounded-[28px] border border-navy/10 bg-white p-5 shadow-sm">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-black text-navy">
-                  <span className="flex items-center gap-2">
-                    <HelpCircle size={18} className="text-turquoise" /> {question}
-                  </span>
-                  <ArrowRight className="shrink-0 transition group-open:rotate-90" size={18} />
-                </summary>
-                <p className="mt-4 leading-7 text-navy/70">{answer}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FAQAccordion items={faq} />
+
+      <GoogleProfileCard href="#" />
 
       <section id="contato" className="bg-[url('/images/wave-pattern.svg')] bg-cover bg-center py-16 sm:py-24">
         <div className="section-shell grid gap-10 lg:grid-cols-[.9fr_1.1fr] lg:items-start">

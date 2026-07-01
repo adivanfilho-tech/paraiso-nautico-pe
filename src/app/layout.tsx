@@ -14,20 +14,26 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Paraíso Náutico PE | Passeios privativos de lancha em Carneiros",
+  title: "Passeio de lancha na Praia dos Carneiros | Paraíso Náutico PE",
   description:
-    "Landing page moderna para reservas de passeios privativos de lancha na Praia dos Carneiros com embarque no Píer de Guadalupe.",
+    "Reserve seu passeio de lancha na Praia dos Carneiros e em Guadalupe - PE com roteiro privativo, embarque no Píer de Guadalupe e atendimento por WhatsApp.",
+  keywords: [
+    "passeio de lancha na Praia dos Carneiros",
+    "passeio de lancha em Guadalupe - PE",
+    "lancha privativa em Pernambuco",
+    "Paraíso Náutico PE"
+  ],
   openGraph: {
-    title: "Paraíso Náutico PE | Passeios privativos de lancha em Carneiros",
+    title: "Passeio de lancha na Praia dos Carneiros | Paraíso Náutico PE",
     description:
-      "Passeios privativos com roteiro em Carneiros, atendimento por WhatsApp e reserva rápida.",
+      "Passeios privativos com roteiro em Carneiros, embarque no Píer de Guadalupe e reserva rápida pelo WhatsApp.",
     type: "website"
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paraíso Náutico PE | Passeios privativos de lancha em Carneiros",
+    title: "Passeio de lancha na Praia dos Carneiros | Paraíso Náutico PE",
     description:
-      "Passeios privativos com roteiro em Carneiros, atendimento por WhatsApp e reserva rápida."
+      "Passeios privativos com roteiro em Carneiros, embarque no Píer de Guadalupe e reserva rápida pelo WhatsApp."
   }
 };
 
